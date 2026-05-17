@@ -5,6 +5,8 @@ const voiceBtn = document.getElementById("voiceBtn");
 const favBtn = document.getElementById("favBtn");
 const favList = document.getElementById("favList");
 const themeBtn = document.getElementById("themeBtn");
+const clearFavBtn =
+    document.getElementById("clearFavBtn");
 
 let currentJoke = "";
 
@@ -79,11 +81,46 @@ function loadFavorites(){
 
     favList.innerHTML = "";
 
-    favorites.forEach(joke => {
+    favorites.forEach((joke,index) => {
 
         const li = document.createElement("li");
 
-        li.innerText = joke;
+        /* Joke Text */
+
+        const jokeText =
+            document.createElement("span");
+
+        jokeText.innerText = joke;
+
+        /* Remove Button */
+
+        const removeBtn =
+            document.createElement("button");
+
+        removeBtn.innerText = "❌ Remove";
+
+        removeBtn.classList.add("remove-btn");
+
+        /* Remove Favorite */
+
+        removeBtn.addEventListener(
+            "click",
+            () => {
+
+                favorites.splice(index,1);
+
+                localStorage.setItem(
+                    "favorites",
+                    JSON.stringify(favorites)
+                );
+
+                loadFavorites();
+            }
+        );
+
+        li.appendChild(jokeText);
+
+        li.appendChild(removeBtn);
 
         favList.appendChild(li);
     });
@@ -135,3 +172,18 @@ themeBtn.addEventListener(
 /* LOAD FAVORITES ON START */
 
 loadFavorites();
+
+
+/* CLEAR ALL FAVORITES */
+
+clearFavBtn.addEventListener(
+    "click",
+    () => {
+
+        localStorage.removeItem("favorites");
+
+        loadFavorites();
+
+        alert("All favorites cleared 🗑");
+    }
+);

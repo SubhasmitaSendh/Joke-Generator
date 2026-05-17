@@ -11,15 +11,16 @@ body{
 
     display:flex;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
 
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
 
     background:#050816;
 
     position:relative;
 
-    padding:20px;
+    padding:40px 20px;
 }
 
 /* NEON GLOW BACKGROUND */
@@ -357,4 +358,93 @@ button:hover{
     .buttons{
         justify-content:center;
     }
+}
+
+/* FAVORITE REMOVE BUTTON */
+
+#favList li{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+}
+
+.remove-btn{
+
+    background:#ff3b3b;
+
+    color:white;
+
+    border:none;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+}
+
+.remove-btn:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 10px #ff3b3b,
+        0 0 20px #ff3b3b;
+}
+
+
+/* FAVORITES HEADER */
+
+.fav-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:15px;
+}
+
+/* CLEAR BUTTON */
+
+#clearFavBtn{
+
+    background:#ff4444;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 16px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    transition:0.3s;
+
+    box-shadow:
+        0 0 10px #ff4444,
+        0 0 20px #ff4444;
+}
+
+#clearFavBtn:hover{
+
+    transform:scale(1.05);
 }
